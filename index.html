@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lista de tareas con filtros, prioridades y guardado automático.">
+  <title>TaskFlow | Lista de tareas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">✔</span>
+      <span>TaskFlow</span>
+    </div>
+    <button id="tema" class="icono" type="button" aria-label="Cambiar tema">🌙</button>
+  </header>
+
+  <main class="app">
+    <section class="hero">
+      <h1>Organiza tu día</h1>
+      <p id="fecha" class="fecha"></p>
+    </section>
+
+    <section class="resumen" aria-label="Resumen">
+      <div class="stat"><strong id="total">0</strong><span>Total</span></div>
+      <div class="stat"><strong id="pendientes">0</strong><span>Pendientes</span></div>
+      <div class="stat"><strong id="hechas">0</strong><span>Hechas</span></div>
+    </section>
+
+    <div class="progreso" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso">
+      <div id="barra"></div>
+    </div>
+
+    <form id="form" class="nueva">
+      <input id="input" type="text" placeholder="¿Qué tienes que hacer?" maxlength="80" required>
+      <select id="prioridad" aria-label="Prioridad">
+        <option value="baja">Baja</option>
+        <option value="media" selected>Media</option>
+        <option value="alta">Alta</option>
+      </select>
+      <button type="submit">Agregar</button>
+    </form>
+
+    <nav class="filtros" aria-label="Filtros">
+      <button class="filtro activo" data-filtro="todas" type="button">Todas</button>
+      <button class="filtro" data-filtro="pendientes" type="button">Pendientes</button>
+      <button class="filtro" data-filtro="hechas" type="button">Hechas</button>
+      <input id="buscar" type="search" placeholder="Buscar..." aria-label="Buscar tarea">
+    </nav>
+
+    <ul id="lista"></ul>
+    <p id="vacio" class="vacio" hidden>No hay tareas aquí. ¡Agrega la primera!</p>
+
+    <footer class="pie">
+      <span id="contador"></span>
+      <button id="limpiar" class="enlace" type="button">Borrar completadas</button>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
